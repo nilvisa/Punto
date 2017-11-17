@@ -1,0 +1,7 @@
+@function createBlockShadow($width, $color) {
+  $block: 0.004em 0.004em 0 $color;
+  @for $i from 5 through $width {
+    $block: #{$block}, #{$i/1000}em #{$i/1000}em 0 $shadow;
+  }  
+  @return $block;
+}
