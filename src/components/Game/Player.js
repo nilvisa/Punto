@@ -1,41 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Player extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      playerName: props.player.name,
-      points: props.player.points
-    }
-  }
-
-  removePoint = (event) => {
-    this.setState({ points: this.state.points - 1 });
-  }
-
-  addPoint = (event) => {
-    this.setState({ points: this.state.points + 1 });
-  }
-
-  render() {
-    return (
+const Player = props => (
+  <div className="player">
+    <h3>{props.player.name}</h3>
+    {props.player.points >= props.max ? (
       <div>
-        <h3>{this.state.playerName}</h3>
-        {this.state.points >= this.props.max ? (
-          <div>
-            <h4>Har vunnit!!!</h4>
-          </div>
-        ) : (
-            <div>
-              <button onClick={this.removePoint}>-</button>
-              <h3>{this.state.points}</h3>
-              <button onClick={this.addPoint}>+</button>
-            </div>
-          )}
+        <h4>Har vunnit!!!</h4>
       </div>
-    );
-  }
-}
+    ) : (
+        <div>
+          <button onClick={props.updPlayerPoints}>-</button>
+          <h3>{props.player.points}</h3>
+          <button onClick={props.updPlayerPoints}>+</button>
+        </div>
+      )}
+  </div>
+);
 
 export default Player;
