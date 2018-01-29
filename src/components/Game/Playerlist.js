@@ -3,6 +3,11 @@ import React from 'react';
 import Player from './Player';
 
 const Playerlist = props => {
+
+  props.players.sort((a, b)=> {
+    return b.points - a.points;
+  });
+
   return(
     <ul className="playerlist">
       {
